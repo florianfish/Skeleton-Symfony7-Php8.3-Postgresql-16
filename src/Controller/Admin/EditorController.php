@@ -27,7 +27,7 @@ class EditorController extends AbstractController
         );
 
         return $this->render('admin/editor/index.html.twig', [
-            'editors' => $editors
+            'editors' => $editors,
         ]);
     }
 

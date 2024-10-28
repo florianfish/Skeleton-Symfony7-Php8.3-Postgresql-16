@@ -9,18 +9,11 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
 class BookCreatorVoter extends Voter
 {
-
-    /**
-     * @inheritDoc
-     */
     protected function supports(string $attribute, mixed $subject): bool
     {
         return 'book.is_creator' === $attribute && $subject instanceof Book;
     }
 
-    /**
-     * @inheritDoc
-     */
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
@@ -28,7 +21,7 @@ class BookCreatorVoter extends Voter
             return false;
         }
 
-        /** @var Book $subject */
+        /* @var Book $subject */
         return $user === $subject->getCreatedBy();
     }
 }
